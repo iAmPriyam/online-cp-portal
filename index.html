@@ -3,11 +3,13 @@
         <title>Code editor</title>
 
         <meta charset="utf-8"/>
+        <link rel="stylesheet" href="./public/style.css">
         <link rel=stylesheet href="codemirror/doc/docs.css">        
         <link rel="stylesheet" href="codemirror/lib/codemirror.css">
         <link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css">
         <link rel="stylesheet" href="codemirror/addon/dialog/dialog.css">
-        <link rel="stylesheet" href="codemirror/theme/monokai.css">
+        <link rel="stylesheet" href="codemirror/theme/dracula.css">
+        <link rel="stylesheet" href="https://codemirror.net/theme/3024-day.css">
         <script src="codemirror/lib/codemirror.js"></script>
         <script src="codemirror/addon/search/searchcursor.js"></script>
         <script src="codemirror/addon/search/search.js"></script>
@@ -26,10 +28,66 @@
           </style>
     </head>
     <body>
-        <div>
+        <header>
+            <span>
+               Platform
+            </span>
+        </header>
+        <div class="question">
+            <h1 class="question-head">
+                Question Heading
+            </h1>
+            <div>
+                <p class="question-description">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab hic ipsa minus reprehenderit quis molestiae iusto magni adipisci debitis! Ducimus sint, sit provident a sapiente repellat nobis ab quasi, necessitatibus tempora nisi itaque in laudantium nesciunt? Eaque illo necessitatibus nostrum temporibus distinctio dolores, non corporis, possimus harum vitae optio magnam neque officia delectus reprehenderit exercitationem, quibusdam veritatis? Quibusdam vel optio necessitatibus quasi, praesentium deleniti consectetur sint iusto molestias, magnam earum, recusandae pariatur? Iste eum incidunt nemo delectus maiores quo porro eligendi commodi, suscipit quia iure, laudantium deserunt illum repellat architecto perspiciatis facilis quam labore excepturi, nam dolores officia? Laborum, nulla?
 
+                </p>
+            </div>
+            <div class="question-addOn">
+                <span>
+                    Input
+                </span>
+                <p>
+                    3
+                    231
+                    312
+                    24    
+                </p>
+            </div>
+            <div class="question-addOn">
+                    <span>
+                        Output
+                    </span>
+                    <p>
+                        1231    
+                    </p>
+                </div>
+            <button class="button">
+                Next
+            </button>
         </div>
-        <textarea id="editor" cols="100" rows="50"></textarea>
+        <div class="solution">
+            <form action="/exec" method="POST">
+            <textarea id="editor" cols="100" rows="50" name='code'>
+#include<iostream>
+using namespace std;
+int main(void){
+    int t;
+    cin>>t;
+    while(t--){
+    for(int i=0;i<t*t;i++){
+            cout<<i;
+        }
+        cout<<"\n";
+    }
+    return 0;
+}</textarea>
+            <button class="button" onclick="executeSubmission">
+                Run
+            </button>
+        </form>
+        </div>
+        
         <script>
         var value = CodeMirror.keyMap.sublime;
         console.table(value);
@@ -42,8 +100,12 @@
             lineNumbers: true,
             lineWrapping: true,
             matchBrackets:true,
-            theme:"monokai"
+            smartIndent:true,
+            indentUnit:2,
+            theme:"3024-day"
         });
+        </script>
+        <script src="./index.js">
         </script>
     </body>
 </html>
