@@ -1,14 +1,14 @@
 # online-cp-portal
 
-##Screenshots
+## Screenshot
 
-![Screenshot of the application](https://github.com/iAmPriyam/online-code-editor/images/ss.png)
+![Screenshot of the application](https://github.com/iAmPriyam/online-code-editor/blob/master/images/ss.png)
 
 ## Description
 
 A JavaScript-based online code editor for writing/editing/compiling and running c++ codes. The code editor has a text editor to write the code, an input area to provide input for the code and an output area to display output for the given code and input.
 
-## Dependences
+## Dependencies
 
 -   JavaScript
 -   Node JS
