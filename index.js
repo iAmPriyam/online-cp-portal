@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", socket => {
-    console.log("New Connection:" + socket.id);
+    // console.log("New Connection:" + socket.id);
     socket.emit("startup", templates);
     socket.on("codeSumbission", compile => {
         console.table(compile);
@@ -30,7 +30,7 @@ io.on("connection", socket => {
                     console.log(err);
                 }
                 const result = { stdout, stderr };
-                console.table(result);
+                // console.table(result);
                 socket.emit("verdict", result);
 
                 fs.unlinkSync("./input.in", () => {

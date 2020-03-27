@@ -36,12 +36,12 @@ outputTab.addEventListener("click", e => {
 
 codeBlock.addEventListener("submit", e => {
     e.preventDefault();
-    console.log("run");
+    // console.log("run");
     let code = e.target.elements.editor.value;
-    console.log(code);
+    // console.log(code);
     const input = e.target.elements.input.value;
     const compile = { code, input };
-    console.table(compile);
+    // console.table(compile);
     socket.emit("codeSumbission", compile);
 });
 
@@ -55,5 +55,5 @@ socket.on("verdict", result => {
     switchToOututArea();
     const output = result.stdout || result.stderr;
     outputArea.getElementsByClassName("output-span")[0].textContent = output;
-    console.table(output);
+    // console.table(output);
 });
