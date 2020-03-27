@@ -43,6 +43,7 @@
                         Code Editor
                     </span>
                 </div>
+                <form class="code-block">
                 <textarea id="editor" cols="100" rows="50" name="code">
 #include <iostream>
 using namespace std;
@@ -67,14 +68,15 @@ int main(void)
                     <button class="result-btn output">Output</button>
                 </div>
                 <div class="input-area">
-                    <textarea class="input-span"></textarea>
+                    <input id="input" type="text" class="input-span"></input>
                 </div>
                 <div class="output-area">
                     <span class="output-span"> </texspantarea>
                 </div>
-                <button class="run-btn">
+                <button type="submit" class="run-btn">
                     Run
                 </button>
+            </form>
             </div>
         </div>
         <script>

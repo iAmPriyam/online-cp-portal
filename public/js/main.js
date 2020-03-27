@@ -4,7 +4,7 @@ const inputTab = document.querySelector(".result-btn.input");
 const inputArea = document.querySelector(".input-area");
 const outputTab = document.querySelector(".result-btn.output");
 const outputArea = document.querySelector(".output-area");
-const runButton = document.querySelector(".run-btn");
+const codeBlock = document.querySelector(".code-block");
 const textEditor = document.querySelector("#editor");
 const switchToInputArea = () => {
     inputTab.setAttribute("style", "background:white;");
@@ -34,12 +34,12 @@ outputTab.addEventListener("click", e => {
     switchToOututArea();
 });
 
-runButton.addEventListener("click", e => {
+codeBlock.addEventListener("submit", e => {
     e.preventDefault();
     console.log("run");
-    let code = textEditor.textContent;
+    let code = e.target.elements.editor.value;
     console.log(code);
-    const input = inputArea.getElementsByClassName("input-span")[0].textContent;
+    const input = e.target.elements.input.value;
     const compile = { code, input };
     console.table(compile);
     socket.emit("codeSumbission", compile);
@@ -55,34 +55,3 @@ socket.on("verdict", result => {
     outputArea.getElementsByClassName("output-span")[0].textContent = output;
     console.table(output);
 });
-
-// const executeSubmission = code => {
-//     exec("touch solution.cpp");
-//     fs.writeFileSync("./solution.cpp", code);
-//     exec(
-//         "g++ solution.cpp -o submission && ./submission <in.txt >out.txt",
-//         function(err, stdout, stderr) {
-//             if (stderr) {
-//                 // val=stderr.toString('utff8')
-//                 // console.log(val);
-//                 // res.send('<p>'+val+'</p>');
-//                 response = stderr;
-//             } else if (err) {
-//                 // val=val.toString('utff8')
-//                 // console.log(val);
-//                 // res.send('<p>'+val+'</p>');
-//                 response = err;
-//             }
-//         }
-//     );
-//     exec("cat out.txt", (err, stdout, stderr) => {
-//         if (stdout) console.log(stdout);
-//     });
-//     exec("diff out.txt ans.txt", (err, stdout, stderr) => {
-//         if (stdout === "") {
-//             res.send("Accepted!");
-//         } else {
-//             res.send("Wrong answer");
-//         }
-//     });
-// };
