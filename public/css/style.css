@@ -52,8 +52,7 @@
     align-items: center;
     align-self: center;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
     background-color: #dce2f1;
 }
 
@@ -98,9 +97,12 @@
 
 .input-span,
 .output-span {
+    overflow: auto;
     white-space: pre-wrap;
     height: 100%;
     width: 100%;
     outline: none;
     resize: none;
+    border: 0;
+    font-size: 1em;
 }

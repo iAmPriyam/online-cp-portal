@@ -44,39 +44,33 @@
                     </span>
                 </div>
                 <form class="code-block">
-                <textarea id="editor" cols="100" rows="50" name="code">
+                    <textarea id="editor" cols="100" rows="50" name="code">
 #include <iostream>
 using namespace std;
-int fact(int n)
-{
-    if(n<=1)
-        return 1;
-    return n * fact(n - 1);
-}
+
 int main(void)
 {
-    int t;
-    cin>>t;
-    cout << fact(t);
-    return 0;
-}
-                    
-</textarea
-                >
-                <div class="result">
-                    <button class="result-btn input">Input</button>
-                    <button class="result-btn output">Output</button>
-                </div>
-                <div class="input-area">
-                    <input id="input" type="text" class="input-span"></input>
-                </div>
-                <div class="output-area">
-                    <span class="output-span"> </texspantarea>
-                </div>
-                <button type="submit" class="run-btn">
-                    Run
-                </button>
-            </form>
+    //write code here
+}</textarea
+                    >
+                    <div class="result">
+                        <button class="result-btn input">Input</button>
+                        <button class="result-btn output">Output</button>
+                    </div>
+                    <div class="input-area">
+                        <textarea
+                            id="input"
+                            type="text"
+                            class="input-span"
+                        ></textarea>
+                    </div>
+                    <div class="output-area">
+                        <textarea readonly class="output-span"> </textarea>
+                    </div>
+                    <button type="submit" class="run-btn">
+                        Run
+                    </button>
+                </form>
             </div>
         </div>
         <script>

@@ -5,6 +5,7 @@ const path = require("path");
 const exec = require("child_process").exec;
 const bodyParser = require("body-parser");
 const fs = require("fs");
+const templates = require("./util/template");
 
 const app = express();
 const server = http.createServer(app);
@@ -15,7 +16,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 io.on("connection", socket => {
     console.log("New Connection:" + socket.id);
-    socket.emit("welcome", "Welcome to the editor!");
+    socket.emit("startup", templates);
     socket.on("codeSumbission", compile => {
         console.table(compile);
         const code = compile.code;

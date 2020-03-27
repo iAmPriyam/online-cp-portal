@@ -5,7 +5,7 @@ const inputArea = document.querySelector(".input-area");
 const outputTab = document.querySelector(".result-btn.output");
 const outputArea = document.querySelector(".output-area");
 const codeBlock = document.querySelector(".code-block");
-const textEditor = document.querySelector("#editor");
+const textEditor = document.getElementById("editor");
 const switchToInputArea = () => {
     inputTab.setAttribute("style", "background:white;");
     inputArea.setAttribute("style", "display:block;");
@@ -45,9 +45,11 @@ codeBlock.addEventListener("submit", e => {
     socket.emit("codeSumbission", compile);
 });
 
-socket.on("welcome", message => {
-    console.log(message);
-});
+// socket.on("startup", templates => {
+//     const tmpl = document.createTextNode(templates.cpp);
+//     console.log(tmpl);
+//     textEditor.appendChild(tmpl);
+// });
 
 socket.on("verdict", result => {
     switchToOututArea();
