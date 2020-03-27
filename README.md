@@ -2,7 +2,7 @@
 
 ## Screenshots
 
-![Screenshot of the application](https://github.com/iAmPriyam/online-code-editor/images/ss.png)
+![Screenshot of the application](https://github.com/iAmPriyam/online-code-editor/blob/master/images/ss.png)
 
 ## Description
 
