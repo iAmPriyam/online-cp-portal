@@ -1,6 +1,6 @@
 # online-cp-portal
 
-##Screenshots
+## Screenshots
 
 ![Screenshot of the application](https://github.com/iAmPriyam/online-code-editor/images/ss.png)
 
