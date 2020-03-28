@@ -11,6 +11,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+const PORT = 3300 || process.env.PORT;
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -72,4 +74,4 @@ io.on("connection", socket => {
 //     });
 // });
 
-server.listen(3300, () => console.log("listening on 3300"));
+server.listen(PORT, () => console.log(`listening on ${PORT}`));
