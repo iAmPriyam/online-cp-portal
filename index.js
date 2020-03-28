@@ -14,6 +14,10 @@ const io = socketIo(server);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/", (req, res) => {
+    res.sendFile("index.html");
+});
+
 io.on("connection", socket => {
     // console.log("New Connection:" + socket.id);
     socket.emit("startup", templates);
