@@ -18,29 +18,19 @@ io.on("connection", socket => {
     // console.log("New Connection:" + socket.id);
     socket.emit("startup", templates);
     socket.on("codeSumbission", compile => {
-        console.table(compile);
+        // console.table(compile);
         const code = compile.code;
         const input = compile.input;
         fs.writeFileSync("./solution.cpp", code);
         fs.writeFileSync("./input.in", input);
-        exec(
-            `g++ solution.cpp -o submission && ./submission <input.in `,
-            function(err, stdout, stderr) {
-                if (err) {
-                    console.log(err);
-                }
-                const result = { stdout, stderr };
-                // console.table(result);
-                socket.emit("verdict", result);
-
-                fs.unlinkSync("./input.in", () => {
-                    if (err) throw err;
-                });
-                fs.unlinkSync("./solution.cpp", () => {
-                    if (err) throw err;
-                });
+        exec(`./prog `, function(err, stdout, stderr) {
+            if (err) {
+                console.log(err);
             }
-        );
+            const result = { stdout, stderr };
+            // console.table(result);
+            socket.emit("verdict", result);
+        });
     });
 });
 
