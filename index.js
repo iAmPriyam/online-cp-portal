@@ -20,16 +20,16 @@ app.get("/", (req, res) => {
     res.sendFile("index.html");
 });
 
-io.on("connection", socket => {
+io.on("connection", (socket) => {
     // console.log("New Connection:" + socket.id);
     socket.emit("startup", templates);
-    socket.on("codeSumbission", compile => {
+    socket.on("codeSumbission", (compile) => {
         // console.table(compile);
         const code = compile.code;
         const input = compile.input;
         fs.writeFileSync("./solution.cpp", code);
         fs.writeFileSync("./input.in", input);
-        exec(`./prog `, function(err, stdout, stderr) {
+        exec(`./prog `, function (err, stdout, stderr) {
             if (err) {
                 console.log(err);
             }
@@ -39,39 +39,5 @@ io.on("connection", socket => {
         });
     });
 });
-
-// app.post("/exec", function(req, res, next) {
-//     // var response;
-//     console.log(req.body.code);
-//     const code = req.body.code;
-//     exec("touch solution.cpp");
-//     fs.writeFileSync("./solution.cpp", code);
-//     exec(
-//         "g++ solution.cpp -o submission && ./submission <in.txt >out.txt",
-//         function(err, stdout, stderr) {
-//             if (stderr) {
-//                 // val=stderr.toString('utff8')
-//                 // console.log(val);
-//                 // res.send('<p>'+val+'</p>');
-//                 response = stderr;
-//             } else if (err) {
-//                 // val=val.toString('utff8')
-//                 // console.log(val);
-//                 // res.send('<p>'+val+'</p>');
-//                 response = err;
-//             }
-//         }
-//     );
-//     exec("cat out.txt", (err, stdout, stderr) => {
-//         if (stdout) console.log(stdout);
-//     });
-//     exec("diff out.txt ans.txt", (err, stdout, stderr) => {
-//         if (stdout === "") {
-//             res.send("Accepted!");
-//         } else {
-//             res.send("Wrong answer");
-//         }
-//     });
-// });
 
 server.listen(PORT, () => console.log(`listening on ${PORT}`));
