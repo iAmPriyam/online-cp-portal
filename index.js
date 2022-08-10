@@ -14,7 +14,7 @@ const io = socketIo(server)
 const PORT = process.env.PORT || 3300
 
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '/frontend/build')))
 
 app.get('/', (req, res) => {
   res.sendFile('index.html')
